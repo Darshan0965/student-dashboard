@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body { background:#111827; }
+    .card {
+      background: rgba(255,255,255,0.07);
+      border-radius:12px;
+      padding:18px;
+      color:white;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+  </style>
+</head>
+
+<body class="text-white p-8">
+  <h1 class="text-3xl font-bold mb-6">Admin Dashboard</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <div class="card text-center">
+      <h2 class="text-xl font-semibold">Total Students</h2>
+      <div id="totalStudents" class="text-3xl mt-2">0</div>
+    </div>
+
+    <div class="card text-center">
+      <h2 class="text-xl font-semibold">Total Classes</h2>
+      <div id="totalClasses" class="text-3xl mt-2">0</div>
+    </div>
+
+    <div class="card text-center">
+      <h2 class="text-xl font-semibold">Overall Attendance</h2>
+      <div id="overallAttendance" class="text-3xl mt-2">0%</div>
+    </div>
+  </div>
+
+  <button onclick="location.href='timetable-add.html'"
+          class="px-4 py-2 bg-blue-600 rounded">Add Timetable</button>
+
+  <button id="logoutBtn"
+          class="px-4 py-2 bg-red-600 rounded ml-3">Logout</button>
+
+  <h2 class="text-2xl font-bold mt-6 mb-3">Classes</h2>
+
+  <div id="classGrid" class="grid grid-cols-2 md:grid-cols-5 gap-4"></div>
+
+  <script src="admin-dashboard.js"></script>
+</body>
+</html>

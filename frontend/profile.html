@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Student Profile</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-900 text-white p-6">
+  <div class="max-w-5xl mx-auto">
+    <a href="/admin-dashboard.html" class="text-gray-300">← Back</a>
+    <h1 id="title" class="text-3xl font-bold mt-2">Profile</h1>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+      <div class="bg-white/5 p-4 rounded">
+        <img id="photo" src="https://via.placeholder.com/150" class="w-36 h-36 rounded mx-auto"/>
+        <h2 id="name" class="text-xl text-center mt-3"></h2>
+        <p id="meta" class="text-sm text-gray-300 text-center"></p>
+        <div id="summary" class="mt-4 text-sm text-gray-200"></div>
+      </div>
+
+      <div class="bg-white/5 p-4 rounded md:col-span-2">
+        <h3 class="font-semibold">Subjects & Marks</h3>
+        <table class="w-full text-sm mt-2">
+          <thead class="text-gray-400"><tr><th>#</th><th>Subject</th><th>Marks</th></tr></thead>
+          <tbody id="marksTbody"></tbody>
+        </table>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+          <div class="bg-white/6 p-3 rounded">
+            <h4 class="text-sm">Marks Chart</h4>
+            <canvas id="marksChart" height="200"></canvas>
+          </div>
+          <div class="bg-white/6 p-3 rounded">
+            <h4 class="text-sm">Attendance</h4>
+            <canvas id="attChart" height="200"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="charts.js"></script>
+  <script src="profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Student Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-6">
+  <div class="max-w-3xl mx-auto">
+
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-3xl font-bold">Student Dashboard</h1>
+      <button id="btnLogout" class="bg-red-600 text-white px-4 py-2 rounded">Logout</button>
+    </div>
+
+    <!-- Student Info -->
+    <div id="studentProfile" class="bg-white p-4 rounded shadow mb-6"></div>
+
+    <!-- Marks -->
+    <div id="marksCard" class="bg-white p-4 rounded shadow"></div>
+
+  </div>
+
+  <script>
+    async function initStudent() {
+
+      // ---- Check login status ----
+      const meRes = await fetch('/auth/me');
+      if (!meRes.ok) {
+        alert("Please login");
+        window.location.href = "/login.html";
+        return;
+      }
+      const me = await meRes.json();
+
+      if (me.role !== 'student') {
+        alert("Only students can access this page");
+        window.location.href = "/login.html";
+        return;
+      }
+
+      // ---- Get student_id from login ----
+      const studentId = me.student_id;
+
+      // ---- Load student details ----
+      const stuRes = await fetch(`/students/${studentId}`);
+      const student = await stuRes.json();
+
+      document.getElementById('studentProfile').innerHTML = `
+        <h2 class="text-xl font-bold">${student.name} 
+          <span class="text-sm text-gray-600">(${student.roll_no})</span>
+        </h2>
+        <p class="text-sm text-gray-600">Class: ${student.class}</p>
+        <p class="mt-2"><strong>Attendance:</strong> 
+          ${student.attendance?.[0] ? `${student.attendance[0].present_days}/${student.attendance[0].total_days}` : 'N/A'}
+        </p>
+      `;
+
+      // ---- Marks ----
+      let marksHtml = `<h2 class="text-xl font-semibold mb-2">Marks</h2>`;
+      if (student.marks.length > 0) {
+        marksHtml += `<ul class="space-y-1">`;
+        student.marks.forEach(m => {
+          marksHtml += `<li>${m.subject}: <strong>${m.marks}</strong></li>`;
+        });
+        marksHtml += `</ul>`;
+      } else {
+        marksHtml += `<p class="text-sm text-gray-600">No marks available</p>`;
+      }
+
+      document.getElementById("marksCard").innerHTML = marksHtml;
+    }
+
+    // ---- Logout ----
+    document.getElementById('btnLogout').addEventListener('click', async () => {
+      await fetch('/auth/logout', { method: 'POST' });
+      window.location.href = '/login.html';
+    });
+
+    initStudent();
+  </script>
+
+</body>
+</html>

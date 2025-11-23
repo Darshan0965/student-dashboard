@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Edit Student</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body{background:#0b0f19;color:white;font-family:Poppins, sans-serif}
+.card{background:#121826;padding:25px;margin:auto;margin-top:60px;max-width:480px;border-radius:14px;box-shadow:0 0 20px rgba(0,255,255,0.2)}
+input,select{width:100%;padding:12px;margin-top:10px;background:#1b2436;border:1px solid #00ffff55;border-radius:8px;color:white}
+label{margin-top:15px;display:block;font-size:14px;opacity:0.8}
+button{width:100%;margin-top:25px;padding:14px;font-weight:600;border-radius:8px;background:linear-gradient(90deg,#00ffff,#0099ff);color:black}
+.btn-back{margin-top:15px;padding:12px;width:100%;border-radius:8px;background:#222;color:white}
+</style>
+</head>
+<body>
+<div class="card">
+  <h2 class="text-2xl font-bold text-center text-cyan-300">Edit Student</h2>
+
+  <div id="form">
+    <label>Name</label>
+    <input id="name">
+    <label>Roll Number</label>
+    <input id="roll">
+    <label>Class</label>
+    <input id="class">
+    <label>Gender</label>
+    <select id="gender"><option value="Male">Male</option><option value="Female">Female</option><option value="Other">Other</option></select>
+    <button onclick="saveStudent()">Save Changes</button>
+    <button onclick="history.back()" class="btn-back">Back</button>
+  </div>
+
+  <p id="status" class="text-center text-gray-400 mt-3"></p>
+</div>
+<script src="edit-student.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Student Profile</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-4xl mx-auto">
+    <button onclick="goBack()" class="bg-gray-700 text-white px-4 py-2 rounded mb-4">← Back</button>
+    <div class="bg-white p-4 rounded shadow mb-4 flex gap-6">
+      <div>
+        <img id="profilePhoto" src="" alt="photo" class="w-36 h-36 object-cover rounded border"/>
+        <div class="mt-2">
+          <input id="photoInput" type="file" accept="image/*" />
+          <button id="uploadPhotoBtn" class="bg-blue-600 text-white px-3 py-1 rounded mt-2">Upload Photo</button>
+        </div>
+      </div>
+      <div class="flex-1">
+        <h2 id="stuName" class="text-2xl font-bold"></h2>
+        <p id="stuRoll" class="text-sm text-gray-700"></p>
+        <p id="stuClass" class="text-sm text-gray-700"></p>
+        <p id="stuGender" class="text-sm text-gray-700"></p>
+        <p id="stuNotes" class="text-sm text-gray-700 mt-2"></p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="bg-white p-4 rounded shadow">
+        <h3 class="font-semibold mb-2">Marks</h3>
+        <canvas id="marksChart"></canvas>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <h3 class="font-semibold mb-2">Attendance</h3>
+        <canvas id="attendanceChart"></canvas>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="student-profile.js"></script>
+</body>
+</html>

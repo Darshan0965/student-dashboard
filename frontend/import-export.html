@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Import / Export Marks</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-6 bg-gray-100">
+  <div class="max-w-3xl mx-auto bg-white p-6 rounded shadow">
+    <h1 class="text-2xl font-bold mb-4">Import / Export Marks</h1>
+
+    <div class="mb-4">
+      <label class="block text-sm">Exam ID</label>
+      <input id="examId" class="border p-2 w-full" readonly />
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-sm">Upload XLSX (columns: roll_no / student_id , marks)</label>
+      <input id="fileInput" type="file" accept=".xlsx,.xls" class="border p-2 w-full" />
+      <div class="mt-3">
+        <button id="btnUpload" class="bg-green-600 text-white px-4 py-2 rounded">Upload & Import</button>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <a id="exportLink" class="bg-blue-600 text-white px-4 py-2 rounded" href="#">Export Current Exam (XLSX)</a>
+    </div>
+
+    <div class="mt-6 text-sm text-gray-600">
+      <p>Upload a spreadsheet with columns: <strong>roll_no</strong> (or student_id) and <strong>marks</strong>. Header names are flexible.</p>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const examId = params.get('exam_id');
+    document.getElementById('examId').value = examId || '';
+    if (examId) {
+      document.getElementById('exportLink').href = `/api/exam-marks/export/${examId}`;
+    }
+    document.getElementById('btnUpload').addEventListener('click', async () => {
+      const f = document.getElementById('fileInput').files[0];
+      if (!f) return alert('Select a file');
+      if (!examId) return alert('Missing exam id');
+      const fd = new FormData();
+      fd.append('file', f);
+      const res = await fetch(`/api/exam-marks/import?exam_id=${examId}`, { method: 'POST', body: fd, credentials:'same-origin' });
+      if (!res.ok) {
+        const e = await res.json().catch(()=>null);
+        return alert('Upload failed: '+(e?.error||res.status));
+      }
+      const data = await res.json();
+      alert('Import done: ' + (data.processed || 0) + ' rows processed');
+      // go back
+      window.location.href = `/class-view.html?class=${encodeURIComponent(document.getElementById('examClass')?.value || '')}`;
+    });
+  </script>
+</body>
+</html>

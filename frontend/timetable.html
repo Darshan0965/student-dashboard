@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Class Timetable</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body { background:#071126; color:#eef2ff; font-family:Poppins, sans-serif; }
+.container { max-width:1100px; margin:36px auto; }
+.header { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.card { background:rgba(255,255,255,0.03); padding:18px; border-radius:12px; border:1px solid rgba(255,255,255,0.04); }
+.table { width:100%; border-collapse: collapse; margin-top:14px; }
+.table th, .table td { padding:10px; border-bottom:1px solid rgba(255,255,255,0.03); text-align:left; }
+.badge { background:#0ea5a4; color:#001; padding:6px 8px; border-radius:6px; font-weight:600; }
+.btn { padding:8px 12px; background:#06b6d4; color:#001; border-radius:8px; font-weight:600; cursor:pointer; }
+.small { font-size:13px; color:#cfe7ff; }
+.empty { color:#9fb4d6; padding:18px; text-align:center; }
+.controls { display:flex; gap:10px; align-items:center; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div>
+      <h1 class="text-3xl font-bold">Class Timetable</h1>
+      <p class="small">View the detailed weekly timetable for any class.</p>
+    </div>
+    <div class="controls">
+      <select id="classSelect" class="card"></select>
+      <button id="btnAdd" class="btn">Add Entry</button>
+      <button id="btnRefresh" class="btn">Refresh</button>
+    </div>
+  </div>
+
+  <div id="timetableContainer" class="card mt-4">
+    <div id="timetableContent" class="small"></div>
+  </div>
+</div>
+
+<script src="timetable.js"></script>
+</body>
+</html>

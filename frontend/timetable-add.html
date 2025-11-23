@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Timetable</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 text-white p-6">
+
+  <div class="max-w-xl mx-auto bg-white/10 p-6 rounded-lg shadow-lg">
+
+    <h1 class="text-3xl font-bold mb-4 text-center">
+      Add Timetable
+    </h1>
+
+    <div class="space-y-4">
+
+      <div>
+        <label class="text-gray-300">Class</label>
+        <input id="classInput"
+               class="w-full p-2 bg-gray-800 rounded mt-1"
+               placeholder="Example: CSE-A">
+      </div>
+
+      <div>
+        <label class="text-gray-300">Time</label>
+        <input id="timeInput"
+               class="w-full p-2 bg-gray-800 rounded mt-1"
+               placeholder="9:00 AM - 10:00 AM">
+      </div>
+
+      <div>
+        <label class="text-gray-300">Subject</label>
+        <input id="subjectInput"
+               class="w-full p-2 bg-gray-800 rounded mt-1"
+               placeholder="Computer Networks">
+      </div>
+
+      <div>
+        <label class="text-gray-300">Faculty Name</label>
+        <input id="facultyInput"
+               class="w-full p-2 bg-gray-800 rounded mt-1"
+               placeholder="Dr. Kumar / Mrs. Priya">
+      </div>
+
+      <button id="saveBtn"
+              class="w-full mt-4 bg-blue-600 py-2 rounded hover:bg-blue-700">
+        Save Timetable
+      </button>
+
+      <button onclick="window.location.href='admin-dashboard.html'"
+              class="w-full bg-gray-700 py-2 rounded mt-2 hover:bg-gray-600">
+        Back to Dashboard
+      </button>
+
+    </div>
+  </div>
+
+  <script src="timetable-add.js"></script>
+</body>
+</html>

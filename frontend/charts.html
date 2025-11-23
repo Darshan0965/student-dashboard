@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Charts</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-6">
+
+  <button onclick="history.back()" class="bg-gray-800 text-white px-4 py-2 rounded">
+    ← Back
+  </button>
+
+  <h1 class="text-3xl font-bold mt-4 mb-6">Student Performance Charts</h1>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-semibold mb-3">Marks Chart</h2>
+      <div id="marksChart" class="p-3 border rounded bg-gray-50">Loading...</div>
+    </div>
+
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-semibold mb-3">Attendance</h2>
+      <div id="attendanceBox" class="p-3 border rounded bg-gray-50">Loading...</div>
+    </div>
+  </div>
+
+  <script src="charts.js"></script>
+</body>
+</html>
